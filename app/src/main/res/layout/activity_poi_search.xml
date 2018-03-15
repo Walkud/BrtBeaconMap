@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/in_map_view" />
+
+    <SearchView
+        android:id="@+id/poi_name_sv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#b9454545"
+        android:iconifiedByDefault="false"
+        android:queryHint="请输入搜索内容"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+</FrameLayout>

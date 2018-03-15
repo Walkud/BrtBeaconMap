@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.brtbeacon.map.lib" >
+
+    <!-- 在线更新数据 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 定位扫描beacon用 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 拷贝数据到sd卡用，targetSdkVersion>=23还需手动申请 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--Android6.0 后蓝牙扫描需要蓝牙定位权限：COARSE或者FINE均可，targetSdkVersion>=23还需手动申请-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application>
+        <!-- 扫描beacon服务 -->
+        <service android:name="com.ty.locationengine.ibeacon.BeaconService" />
+    </application>
+</manifest>

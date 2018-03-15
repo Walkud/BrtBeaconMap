@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BrtBeaconMapExtDemo</string>
+
+    <!--权限相关-->
+    <string name="string_help_text">当前应用缺少%1$s权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="p_camera">相机</string>
+    <string name="p_read_external_storage">读取手机存储</string>
+    <string name="p_write_external_storage">读写手机存储</string>
+    <string name="p_read_phone_state">获取手机信息</string>
+    <string name="p_call">拨打电话</string>
+    <string name="p_location">定位</string>
+    <string name="p_read_contract">读取联系人</string>
+
+
+    <string name="S00230027F0910001">办公/培训区</string>
+    <string name="S00230027F0910004">总裁办公室</string>
+    <string name="S00230027F0910005">休闲茶室</string>
+    <string name="S00230027F0910007">茶水间</string>
+    <string name="S00230027F0910008">会议室</string>
+    <string name="S00230027F0910018">办公室</string>
+    <string name="S00230027F0910019">办公室</string>
+    <string name="S00230027F0910020">办公室</string>
+    <string name="S00230027F0910021">办公室</string>
+    <string name="S00230027F0910022">办公室</string>
+</resources>

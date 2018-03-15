@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.brtbeacon.map.ext">
+
+    <!-- 更新数据 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ClassicMapActivity" />
+        <activity android:name=".ui.PointMapActivity" />
+        <activity android:name=".ui.PopWindowMapActivity" />
+        <activity android:name=".ui.MapInfoActivity" />
+        <activity android:name=".ui.MapOperationActivity" />
+        <activity android:name=".ui.LayerControlActivity" />
+        <activity android:name=".ui.MapCoordinateActivity" />
+        <activity android:name=".ui.MapLocalizationActivity" />
+        <activity android:name=".ui.TiledMapActivity" />
+        <activity android:name=".ui.PickupPoiActivity" />
+        <activity android:name=".ui.MapGestureActivity" />
+        <activity android:name=".ui.MapCompassActivity" />
+        <activity android:name=".ui.MarkerImageTextActivity" />
+        <activity android:name=".ui.MarkerLineActivity" />
+        <activity android:name=".ui.MarkerShapeActivity" />
+        <activity android:name=".ui.MarkerFenceActivity" />
+        <activity android:name=".ui.PoiNameSearchActivity" />
+        <activity android:name=".ui.PoiFacilitySearchActivity" />
+        <activity android:name=".ui.PoiDistanceSearchActivity" />
+        <activity android:name=".ui.RoutePlanningActivity" />
+        <activity android:name=".ui.RouteDistanceActivity" />
+        <activity android:name=".ui.RoutePlanningTipActivity" />
+        <activity android:name=".ui.RouteForbiddenActivity" />
+        <activity android:name=".ui.RouteOnlyActivity" />
+        <activity android:name=".ui.LocationActivity" />
+        <activity android:name=".ui.LocationSnapActivity" />
+        <activity android:name=".ui.RouteNavigationActivity" />
+    </application>
+
+</manifest>
