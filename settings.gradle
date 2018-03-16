@@ -1,1 +1,1 @@
-include ':app', ':BrtBeaconMapLib'
+include ':app', ':BrtBeaconMapLib', ':BrtBeaconMapExt'

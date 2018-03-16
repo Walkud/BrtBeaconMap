@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        applicationId "cn.brt.beacon.map.ext"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "10"
+        ndk {
+            // 设置支持的 SO 库构架
+            abiFilters 'armeabi-v7a'//, 'arm64-v8a', 'x86_64', 'mips', 'mips64'
+        }
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        inside {//内部测试
+            buildConfigField "boolean", "INSIDE", "true"
+        }
+
+        online {//线上正式环境
+            buildConfigField "boolean", "INSIDE", "false"
+        }
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage "db"
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':BrtBeaconMapLib')
+    implementation rootProject.ext.dependencies['support-v7']
+    implementation rootProject.ext.dependencies['design']
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.1.3"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+    //网络请求库
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    //OkHttp日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    //运行时权限注解处理
+    annotationProcessor 'com.zhy:mpermission-compiler:1.0.0'
+    //运行时权限
+    implementation 'com.zhy:mpermission-api:1.0.0'
+    //图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    //GreenDao数据库
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    //Logcat日志格式化库
+    compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
+    //facebook出品的Android调试库
+    debugCompile 'com.facebook.stetho:stetho:1.4.2'
+    debugCompile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+    //下拉刷新、上拉加View载库
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
+    //recyclerview分割线
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    //简化Adapter库
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    //滑动返回库
+    compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.7@aar'
+    //沉侵式库
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //SharedPreference对象化库
+    compile 'me.yokeyword.smartsharedpreferences:api:1.0.0'
+    annotationProcessor 'me.yokeyword.smartsharedpreferences:compiler:1.0.0'
+}

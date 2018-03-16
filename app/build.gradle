@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "com.brtbeacon.map.ext"
-        minSdkVersion 17
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,12 +21,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':BrtBeaconMapLib')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation rootProject.ext.dependencies['support-v7']
+    implementation rootProject.ext.dependencies['design']
+
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.android.support:design:26.1.0'
 
     annotationProcessor 'com.zhy:mpermission-compiler:1.0.0'//运行时权限注解处理
     implementation 'com.zhy:mpermission-api:1.0.0'//运行时权限

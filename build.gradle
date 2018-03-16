@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,9 +17,24 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "https://jitpack.io" }
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+    }
+
+    ext {
+        supportVersion = '27.1.0'
+        android = [
+                compileSdkVersion: 27,
+                buildToolsVersion: '27.0.0',
+                minSdkVersion    : 19,
+                targetSdkVersion : 26
+        ]
+        dependencies = [
+                "support-v7": "com.android.support:appcompat-v7:" + supportVersion,
+                "design"    : "com.android.support:design:" + supportVersion,
+                "cardview"  : "com.android.support:cardview-v7:" + supportVersion
+        ]
     }
 }
 
