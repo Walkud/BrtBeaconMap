@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.brt.beacon.map.ext.bean.data.BecaonEntry;
+import cn.brt.beacon.map.ext.bean.data.BeaconEntry;
 
 /**
  * Created by Walkud on 2018/3/16 0016.
@@ -33,8 +33,8 @@ public class DBHandler {
         }
     }
 
-    public List<BecaonEntry> findBecaonList(int floor) {
-        List<BecaonEntry> entrys = new ArrayList<>();
+    public List<BeaconEntry> findBecaonList(int floor) {
+        List<BeaconEntry> entrys = new ArrayList<>();
         StringBuilder sql = new StringBuilder();
         sql.append("select * from " + DbTableConst.BeaconConst.NAME);
         sql.append(" where floor = " + floor);
@@ -42,8 +42,9 @@ public class DBHandler {
         try {
             cursor = db.rawQuery(sql.toString(), null);
             while (cursor.moveToNext()) {
-                BecaonEntry entry = new BecaonEntry();
+                BeaconEntry entry = new BeaconEntry();
 //                entry.setGeom(cursor.getString(cursor.getColumnIndex("geom")));
+                entry.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 entry.setFloor(cursor.getInt(cursor.getColumnIndex("floor")));
                 entry.setMajor(cursor.getShort(cursor.getColumnIndex("major")));
                 entry.setMinor(cursor.getShort(cursor.getColumnIndex("minor")));
@@ -63,5 +64,28 @@ public class DBHandler {
         }
         return entrys;
     }
+
+    public boolean updateBeaconEntity(BeaconEntry beaconEntry) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("update " + DbTableConst.BeaconConst.NAME);
+        sql.append(" set floor = " + beaconEntry.getFloor());
+        sql.append(" , uuid = '" + beaconEntry.getUuid() + "'");
+        sql.append(" , major = " + beaconEntry.getMajor());
+        sql.append(" , minor = " + beaconEntry.getMinor());
+        sql.append(" , x = " + beaconEntry.getX());
+        sql.append(" , y = " + beaconEntry.getY());
+        sql.append(" where id = " + beaconEntry.getId());
+        try {
+            db.beginTransaction();
+            db.execSQL(sql.toString());
+            db.setTransactionSuccessful();
+            db.endTransaction();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 }

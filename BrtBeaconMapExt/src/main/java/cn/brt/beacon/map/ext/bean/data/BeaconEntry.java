@@ -9,8 +9,9 @@ import java.util.Comparator;
  * Beacon实体类
  * Created by zhiqiang on 2016-10-10.
  */
-public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
+public class BeaconEntry implements Serializable, Comparable<BeaconEntry> {
 
+    private int id;
     private String geom;
     private String uuid;
     private short major;
@@ -21,7 +22,15 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     private double x;
     private double y;
 
-    public BecaonEntry() {
+    public BeaconEntry() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getGeom() {
@@ -98,8 +107,9 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
 
     @Override
     public String toString() {
-        return "BecaonEntry{" +
-                "geom='" + geom + '\'' +
+        return "BeaconEntry{" +
+                "id=" + id +
+                ", geom='" + geom + '\'' +
                 ", uuid='" + uuid + '\'' +
                 ", major=" + major +
                 ", minor=" + minor +
@@ -107,7 +117,7 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
                 ", shop_id='" + shop_id + '\'' +
                 ", tag='" + tag + '\'' +
                 ", x=" + x +
-                ", y='" + y + '\'' +
+                ", y=" + y +
                 '}';
     }
 
@@ -120,7 +130,7 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
             return false;
         }
 
-        BecaonEntry that = (BecaonEntry) o;
+        BeaconEntry that = (BeaconEntry) o;
         if (major != that.major) {
             return false;
         }
@@ -140,7 +150,7 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     }
 
     @Override
-    public int compareTo(BecaonEntry another) {
+    public int compareTo(BeaconEntry another) {
         int result = 0;
         if (minor > another.getMinor()) {
             result = -1;
@@ -153,10 +163,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 升序
      */
-    public static class MinorDescendingSort implements Comparator<BecaonEntry> {
+    public static class MinorDescendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int result = 0;
             if (lhs.getMinor() > rhs.getMinor()) {
                 result = -1;
@@ -170,10 +180,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 降序
      */
-    public static class MinorAscendingSort implements Comparator<BecaonEntry> {
+    public static class MinorAscendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int result = 0;
             if (lhs.getMinor() > rhs.getMinor()) {
                 result = 1;
@@ -187,10 +197,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 升序
      */
-    public static class MajorDescendingSort implements Comparator<BecaonEntry> {
+    public static class MajorDescendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int result = 0;
             if (lhs.getMajor() > rhs.getMajor()) {
                 result = -1;
@@ -204,10 +214,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 降序
      */
-    public static class MajorAscendingSort implements Comparator<BecaonEntry> {
+    public static class MajorAscendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int result = 0;
             if (lhs.getMajor() > rhs.getMajor()) {
                 result = 1;
@@ -221,10 +231,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 升序
      */
-    public static class DeployDescendingSort implements Comparator<BecaonEntry> {
+    public static class DeployDescendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int lDeploy = TextUtils.isEmpty(lhs.getGeom()) ? 0 : 1;
             int rDeploy = TextUtils.isEmpty(rhs.getGeom()) ? 0 : 1;
             int result = 0;
@@ -240,10 +250,10 @@ public class BecaonEntry implements Serializable, Comparable<BecaonEntry> {
     /**
      * 降序
      */
-    public static class DeployAscendingSort implements Comparator<BecaonEntry> {
+    public static class DeployAscendingSort implements Comparator<BeaconEntry> {
 
         @Override
-        public int compare(BecaonEntry lhs, BecaonEntry rhs) {
+        public int compare(BeaconEntry lhs, BeaconEntry rhs) {
             int lDeploy = TextUtils.isEmpty(lhs.getGeom()) ? 0 : 1;
             int rDeploy = TextUtils.isEmpty(rhs.getGeom()) ? 0 : 1;
             int result = 0;

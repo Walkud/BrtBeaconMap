@@ -7,6 +7,7 @@ import java.util.List;
 import cn.brt.beacon.map.ext.bean.data.MainItem;
 import cn.brt.beacon.map.ext.bean.data.MainSubItem;
 import cn.brt.beacon.map.ext.mvp.ui.activity.BeaconLoadActivity;
+import cn.brt.beacon.map.ext.mvp.ui.activity.RouteInspActivity;
 
 /**
  * 测试数据构建工具类
@@ -26,6 +27,7 @@ public class TestDataUtil {
         //显示地图
         List<MainSubItem> subItems = new ArrayList<>();
         subItems.add(new MainSubItem("Beacon加载显示", BeaconLoadActivity.class));
+        subItems.add(new MainSubItem("Beacon巡检", RouteInspActivity.class));
         mainItems.add(new MainItem("显示地图", subItems));
 
         return mainItems;

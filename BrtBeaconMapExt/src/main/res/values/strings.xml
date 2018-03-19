@@ -13,4 +13,5 @@
     <!--权限相关 End-->
 
     <string name="toast_exit_tip">再按一次退出程序</string>
+    <string name="route_insp">巡检</string>
 </resources>

@@ -15,7 +15,7 @@ import com.ty.mapsdk.TYMapView;
 import java.util.List;
 
 import cn.brt.beacon.map.ext.R;
-import cn.brt.beacon.map.ext.bean.data.BecaonEntry;
+import cn.brt.beacon.map.ext.bean.data.BeaconEntry;
 import cn.brt.beacon.map.ext.db.DBHandler;
 
 /**
@@ -25,7 +25,7 @@ import cn.brt.beacon.map.ext.db.DBHandler;
 
 public class BeaconLoadActivity extends BaseMapViewActivity {
 
-    private List<BecaonEntry> becaonEntries;
+    private List<BeaconEntry> becaonEntries;
     private GraphicsLayer graphicsLayer;
 
     @Override
@@ -53,9 +53,9 @@ public class BeaconLoadActivity extends BaseMapViewActivity {
 
         KLog.d("size:" + becaonEntries.size());
         graphicsLayer.removeAll();
-        for (BecaonEntry becaonEntry : becaonEntries) {
+        for (BeaconEntry beaconEntry : becaonEntries) {
             SimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol(Color.BLUE, 8, SimpleMarkerSymbol.STYLE.CIRCLE);
-            Point point = new Point(becaonEntry.getX(), becaonEntry.getY());
+            Point point = new Point(beaconEntry.getX(), beaconEntry.getY());
             graphicsLayer.addGraphic(new Graphic(point, simpleMarkerSymbol));
         }
     }

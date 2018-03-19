@@ -8,13 +8,18 @@ import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.brt.beacon.map.ext.Config;
 import cn.brt.beacon.map.ext.R;
 import cn.brt.beacon.map.ext.bean.data.MainSubItem;
 import cn.brt.beacon.map.ext.common.utils.PermissionHelper;
+import cn.brt.beacon.map.ext.db.DBHandler;
 import cn.brt.beacon.map.ext.mvp.base.MvcActivity;
 import cn.brt.beacon.map.ext.mvp.ui.adapter.adapter.MainExpandableListAdapter;
+import cn.brt.beacon.map.ext.utils.AssetsCopyTOSDcard;
 import cn.brt.beacon.map.ext.utils.TestDataUtil;
 
 public class MainActivity extends MvcActivity {
@@ -61,6 +66,19 @@ public class MainActivity extends MvcActivity {
      */
     @PermissionGrant(PermissionHelper.WES_ACL_CODE)
     public void requestWesAclCodeSuccess() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String path = "db/00230027_Beacon.db";
+                String toPath = Config.MAP_BEACON_DB_PATH + File.separator + "00230027_Beacon.db";
+                if (!new File(toPath).exists()) {
+                    AssetsCopyTOSDcard assetsCopyTOSDcard = new AssetsCopyTOSDcard(getApplicationContext());
+                    assetsCopyTOSDcard.AssetToSD(path, toPath);
+                }
+                DBHandler.getInstance().initDb(toPath);
+            }
+        }).start();
+
     }
 
     /**

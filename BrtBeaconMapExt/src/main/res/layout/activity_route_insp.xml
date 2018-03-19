@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/in_map_view" />
+
+    <TextView
+        android:id="@+id/beacon_info_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#b9454545"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/route_insp_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:text="@string/route_insp"
+        android:textSize="12sp" />
+
+</FrameLayout>

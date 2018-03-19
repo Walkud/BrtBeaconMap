@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.ui.activity.BeaconLoadActivity" />
+        <activity android:name=".mvp.ui.activity.RouteInspActivity" />
 
     </application>
 
